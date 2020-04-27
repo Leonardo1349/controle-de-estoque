@@ -7,14 +7,14 @@ import br.com.projeto.ce.principal.persistencia.jdbc.UsuarioDAO;
 
 public class TesteUsuarioDAO {
 
-	public static void main(String[] args) {		
+public static void main(String[] args) {		
 		//testCadastrar();
 		//testeAlterar();
 		//testeExcluir();
 		//testeBuscarPorId();
-		//testeBuscarPorTodos();
+		testeBuscarPorTodos();
 		//testeAutenticar();
-		testSalvar();
+		//testSalvar();
 }
 	
 public static void testCadastrar(){

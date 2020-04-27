@@ -15,7 +15,7 @@ public class UsuarioDAO {
 	
 	public void cadastrar(Usuario usuario) {		
 		
-		String sql = "INSERT INTO USUARIO(NOME, LOGIN, SENHA) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO USUARIO(NOME, LOGIN, SENHA) VALUES(?, ?, HASHBYTES('MD5',?))";
 		
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class UsuarioDAO {
 	
 	public void alterar(Usuario usuario) {
 		
-		String sql = "UPDATE USUARIO SET NOME = ?, LOGIN = ?, SENHA = ? WHERE ID = ?";
+		String sql = "UPDATE USUARIO SET NOME = ?, LOGIN = ?, SENHA = HASHBYTES('MD5',?) WHERE ID = ?";
 		
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class UsuarioDAO {
   
   public Usuario autenticar(String login, String senha) {
 	 
-	  String sql = "SELECT ID, NOME, LOGIN, SENHA FROM USUARIO WHERE LOGIN = ? AND SENHA = ?";
+	  String sql = "SELECT ID, NOME, LOGIN, SENHA FROM USUARIO WHERE LOGIN = ? AND SENHA = HASHBYTES('MD5',?)";
 	  
 	  try {
 		PreparedStatement ps = conexao.prepareStatement(sql);
